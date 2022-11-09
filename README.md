@@ -12,5 +12,5 @@ This is a self-contained proof of concept implemented using [this page](https://
 
 When the logs are shown, the traces will be displayed immediately. You'll need to wait for about 60 seconds for telemetry metrics to come through.
 
-In an actual environment, the exporters would be configured to expose via HTTP,
+In an actual environment, the exporters would be configured to expose via HTTP (rather than the console),
 with some collection software scraping the information for downstream processing.
