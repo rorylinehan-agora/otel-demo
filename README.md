@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a self-contained proof of concept implemented using [this page](https://opentelemetry.io/docs/instrumentation/python/getting-started/)
+This is a self-contained proof of concept implemented using [this page](https://opentelemetry.io/docs/instrumentation/python/getting-started/). The demo uses Flask, but the instrumentation process is similar across different flavors, such as FastAPI.
 
 ## Usage
 
