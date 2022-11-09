@@ -10,8 +10,6 @@ This is a self-contained proof of concept implemented using [this page](https://
 * Manual: `./run.sh manual`
 * Metrics: `./run.sh metrics`
 
-If you have `jq`, it's easier to see the interesting JSON results like this: `./run.sh metrics | jq .`
-
 When the logs are shown, the traces will be displayed immediately. You'll need to wait for about 60 seconds for telemetry metrics to come through.
 
 In an actual environment, the exporters would be configured to expose via HTTP,
