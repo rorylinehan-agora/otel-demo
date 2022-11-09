@@ -6,7 +6,7 @@ This is a self-contained proof of concept implemented using [this page](https://
 
 ## Usage
 
-* Automatic instrumentation: `./run.sh auto`
+* Automatic instrumentation (default): `./run.sh auto`
 * Manual: `./run.sh manual`
 * Metrics: `./run.sh metrics`
 
