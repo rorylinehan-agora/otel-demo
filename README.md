@@ -1,4 +1,4 @@
-# Opentelemetry POC
+# OpenTelemetry Python app example
 
 ## Overview
 
