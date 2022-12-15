@@ -3,19 +3,12 @@ SHELL ["/bin/bash", "-c"]
 
 ARG mode=auto
 
-RUN mkdir /otel-poc
-WORKDIR /otel-poc
+RUN mkdir /otel-demo
+WORKDIR /otel-demo
 RUN python3 -m venv . && \
     source ./bin/activate && \
     pip install --upgrade pip
-RUN pip install \
-    flask\
-    opentelemetry-distro
-RUN opentelemetry-bootstrap -a install
+ADD requirements.txt .
+RUN pip install -r requirements.txt
 ADD ${mode}.py ./app.py
-CMD [ \
-    "opentelemetry-instrument", \
-    "--traces_exporter", "console", \
-    "--metrics_exporter", "console", \
-    "flask", "run" \
-]
+CMD [ "flask", "run" ]
