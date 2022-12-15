@@ -34,4 +34,6 @@ def do_roll():
     with tracer.start_as_current_span("do_roll") as rollspan:  
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
-        return res
+        with tracer.start_as_current_span("do_nested_roll") as nestedroll:
+            nestedroll.set_attribute("nestedroll.value", res)
+    return res
