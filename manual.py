@@ -11,10 +11,8 @@ from flask import Flask, request
 trace.set_tracer_provider(TracerProvider(resource = Resource.create({SERVICE_NAME: "trace_demo"})))
 tracer = trace.get_tracer(__name__)
 jaeger_exporter = JaegerExporter(
-    # configure agent
     agent_host_name='jaeger',
     agent_port=6831,
-    # optional: configure also collector
     # collector_endpoint='http://localhost:14268/api/traces?format=jaeger.thrift',
     # username=xxxx, # optional
     # password=xxxx, # optional
@@ -31,7 +29,7 @@ def roll_dice():
 
 def do_roll():
     # This creates a new span that's the child of the current one
-    with tracer.start_as_current_span("do_roll") as rollspan:  
+    with tracer.start_as_current_span("do_roll") as rollspan:
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
         with tracer.start_as_current_span("do_nested_roll") as nestedroll:
@@ -43,7 +41,7 @@ def fail_roll_dice():
     return str(do_fail_roll())
 
 def do_fail_roll():
-    with tracer.start_as_current_span("do_fail_roll") as failrollspan:  
+    with tracer.start_as_current_span("do_fail_roll") as failrollspan:
         res = randint(1, 6)
         failrollspan.set_attribute("failroll.value", res)
         raise ValueError
