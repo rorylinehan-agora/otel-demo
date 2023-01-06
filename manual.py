@@ -37,3 +37,13 @@ def do_roll():
         with tracer.start_as_current_span("do_nested_roll") as nestedroll:
             nestedroll.set_attribute("nestedroll.value", res)
     return res
+
+@app.route("/failrolldice")
+def fail_roll_dice():
+    return str(do_fail_roll())
+
+def do_fail_roll():
+    with tracer.start_as_current_span("do_fail_roll") as failrollspan:  
+        res = randint(1, 6)
+        failrollspan.set_attribute("failroll.value", res)
+        raise ValueError
