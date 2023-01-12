@@ -1,4 +1,3 @@
-# These are the necessary import declarations
 from opentelemetry import trace
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 from opentelemetry.sdk.trace import TracerProvider

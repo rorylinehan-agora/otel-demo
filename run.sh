@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
+# bash run.sh manual $(az-secret read -e qa agora--hermes--newrelic-license-key)
+
 mode=${1:-auto}
+nrlicense=$2
 
 docker network create --attachable oteldemo
 
@@ -20,7 +23,7 @@ docker run --network oteldemo --hostname jaeger -d --name jaeger \
   -p 9411:9411 \
   jaegertracing/all-in-one:1.40
 
-docker build -t otel-demo:latest --build-arg mode=${mode} . && \
+docker build -t otel-demo:latest --build-arg mode=${mode} --build-arg nrlicense=${nrlicense} . && \
 echo "starting container..." && docker run --network oteldemo -d --rm --name otel-demo otel-demo:latest && sleep 3 && \
 echo "rolling dice..."
 for count in 1 2 3 4 5
